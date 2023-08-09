@@ -115,7 +115,7 @@ html, body {
   margin-top: 20px;
   padding: 10px 20px 10px 20px;
   border: 1px solid #ccc;
-  height: 40px;
+  min-height: 40px; /* 使用 min-height 替代 height */
   width: 280px;
   border-radius: 10px;
 }

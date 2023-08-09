@@ -7,6 +7,11 @@
   <link rel="stylesheet" href="index.css">
   <script src="https://unpkg.com/vue@3.2.12/dist/vue.global.js"></script>
   <link rel="icon" href="https://blog.xn--8mrw2phtl.eu.org/image/favicon.png">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.20/dist/sweetalert2.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.20/dist/sweetalert2.all.min.js"></script>
+
+  
   <script src="./utils/audio.js"></script>
   <title>emo了个ji</title>
 </head>
@@ -14,7 +19,6 @@
   <div id="app">
     <h1>emo了个ji</h1>
     <h3>第 {{ level }} 关</h3>
-    <br>
     <header>
       <span class="btn" @click="handleStart">开始</span>
       <!--<span class="btn" @click="handleReset">打乱</span>-->
@@ -165,7 +169,7 @@
         /**
          * 卡片默认图标
          */
-        const defaultIcons = ['😅', '🐶', '🤏', '🦄', '👻', '🐵', '🐷', '🐼', '🐸', '🍄', '💩', '🎃'];
+        const defaultIcons = ['😅', '🐶', '🎁', '🦄', '👻', '🐵', '🐷', '🐼', '🐸', '🍄', '💩', '🎃'];
         /**
          * 根据等级选择卡片图标的多种选择
          */
@@ -326,7 +330,16 @@
            // 校验卡片卡槽卡片数量长度
           setTimeout(() => {
             if(selectLength.value >= config.selectMaxLength) {
-              alert('槽位已满');
+              
+  Swal.fire({
+    title: '槽位已满', // 空标题
+    text: '',
+    icon: false, // 不显示图标
+    confirmButtonText: '重新开始', // 更改按钮文字
+    showCancelButton: false, // 不显示取消按钮
+    width: 'auto', // 设置宽度为自适应
+  });
+  
               handleReset();
             }
           }, config.animationTime);
@@ -392,7 +405,14 @@
               }
               if (!hasCards.length && level >= config.maxLevel) {
                 {
-                alert('您已通过全部关卡');
+Swal.fire({
+    title: '恭喜您通过全部关卡', // 空标题
+    text: '',
+    icon: 'success', // 使用喜庆的图标
+    confirmButtonText: '再来一次', // 更改按钮文字
+    showCancelButton: false, // 不显示取消按钮
+    width: 'auto', // 设置宽度为自适应
+  });
                 data.level = 1;
               }
               }
