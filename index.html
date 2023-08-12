@@ -11,7 +11,15 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.20/dist/sweetalert2.min.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.20/dist/sweetalert2.all.min.js"></script>
-
+    <style>
+        select {
+            border: 1px solid #ccc;
+            border-radius: 5px; /* 添加圆角效果 */
+            padding: 5px;
+            margin: 0 10px;
+            font-size: 16px;
+        }
+    </style>
 
     <script src="./utils/audio.js"></script>
     <title>emo了个ji</title>
@@ -22,19 +30,21 @@
         <h1>emo了个ji</h1>
         <h3>第 {{ level }} 关</h3>
         <header>
+        <p align="center">
             <span class="btn" @click="handleStart">开始</span>
             <!--<span class="btn" @click="handleReset">打乱</span>-->
             <span class="btn" @click="handleSwitch('prev')">返回</span>
             <span class="btn" @click="handleSwitch('next')">跳过</span>
+        </p>
             <p class="center">
                 <select v-model="config.row">
-                    <option :value="item" v-for="item in [3,4,5,6,7,8]">{{ item }}</option>
+                    <option :value="item" v-for="item in [3,4,5,6,7]">{{ item }}</option>
                 </select>
-                <span>&ensp;行&ensp;&ensp;&ensp;&ensp;</span>
+                <span>行&ensp;&ensp;&ensp;</span>
                 <select v-model="config.col">
-                    <option :value="item" v-for="item in [3,4,5,6,7,8]">{{ item }}</option>
+                    <option :value="item" v-for="item in [3,4,5,6,7]">{{ item }}</option>
                 </select>
-                <span>&ensp;列</span>
+                <span>列</span>
             </p>
         </header>
         <!-- 容器 -->
@@ -135,13 +145,13 @@
                     // 卡槽设定多少个相同卡片就消掉
                     maxCount: 3,
                     // 动画时间 毫秒
-                    animationTime: 400,
+                    animationTime: 800,
                     // 最大关数
                     maxLevel: 10,
                     // 行
-                    row: 8,
+                    row: 5,
                     // 列
-                    col: 8
+                    col: 5
                 });
 
                 const data = reactive({
